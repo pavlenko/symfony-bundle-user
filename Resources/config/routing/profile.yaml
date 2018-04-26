@@ -1,0 +1,11 @@
+pe_user__profile_edit:
+    path: /edit/
+    methods: [GET, POST]
+    defaults:
+        _controller: pe_user.controller.profile:editAction
+
+pe_user__profile_show:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: pe_user.controller.profile:showAction

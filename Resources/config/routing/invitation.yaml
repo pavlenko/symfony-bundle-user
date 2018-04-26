@@ -1,0 +1,23 @@
+pe_user__invitation_success:
+    path: /success/
+    methods: [GET]
+    defaults:
+        _controller: pe_user.controller.invitation:successAction
+
+pe_user__invitation_cancelled:
+    path: /cancelled/
+    methods: [GET]
+    defaults:
+        _controller: pe_user.controller.invitation:cancelledAction
+
+pe_user__invitation_cancel:
+    path: /cancel/
+    methods: [GET, POST]
+    defaults:
+        _controller: pe_user.controller.invitation:cancelAction
+
+pe_user__invitation_register:
+    path: /
+    methods: [GET, POST]
+    defaults:
+        _controller: pe_user.controller.invitation:registerAction

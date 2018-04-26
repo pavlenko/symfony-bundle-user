@@ -1,0 +1,105 @@
+services:
+    pe_user.object_manager:
+        class: Doctrine\Common\Persistence\ObjectManager
+        arguments:
+            - '%pe_user.object_manager_name%'
+
+    pe_user.repository.user.default:
+        public: true
+        class: PE\Bundle\UserBundle\Doctrine\UserRepository
+        arguments:
+            - '@pe_user.object_manager'
+            - '%pe_user.class.user%'
+            - '@security.encoder_factory'
+
+    pe_user.repository.group.default:
+        public: true
+        class: PE\Bundle\UserBundle\Doctrine\GroupRepository
+        arguments:
+            - '@pe_user.object_manager'
+            - '%pe_user.class.group%'
+
+    pe_user.manager.default:
+        public: true
+        class: PE\Bundle\UserBundle\Manager\UserManager
+        arguments:
+            - '@pe_user.repository.user'
+            - '@pe_user.repository.group'
+
+    pe_user.controller.profile:
+        public: true
+        class: PE\Bundle\UserBundle\Controller\ProfileController
+
+    pe_user.controller.security:
+        public: true
+        class: PE\Bundle\UserBundle\Controller\SecurityController
+
+    pe_user.form_type.identity:
+        class: PE\Bundle\UserBundle\Form\ResetPasswordRequestForm
+        arguments:
+            - '@pe_user.form_data_transformer.user2email'
+            - '@pe_user.form_data_transformer.user2phone'
+        tags:
+            - { name: form.type }
+
+    pe_user.form_data_transformer.user2username:
+        public: true
+        class: PE\Bundle\UserBundle\Form\DataTransformer\User2UsernameTransformer
+        arguments:
+            - '@pe_user.repository.user'
+
+    pe_user.form_data_transformer.user2email:
+        public: true
+        class: PE\Bundle\UserBundle\Form\DataTransformer\User2EmailTransformer
+        arguments:
+            - '@pe_user.repository.user'
+
+    pe_user.form_data_transformer.user2phone:
+        public: true
+        class: PE\Bundle\UserBundle\Form\DataTransformer\User2PhoneTransformer
+        arguments:
+            - '@pe_user.repository.user'
+
+    pe_user.form_data_transformer.user2token:
+        public: true
+        class: PE\Bundle\UserBundle\Form\DataTransformer\User2TokenTransformer
+        arguments:
+            - '@pe_user.repository.user'
+
+    pe_user.user_provider.id:
+        public: true
+        class: PE\Bundle\UserBundle\Security\IDUserProvider
+        arguments:
+            - '@pe_user.repository.user'
+            - '%pe_user.class.user%'
+
+    pe_user.user_provider.username:
+        public: true
+        class: PE\Bundle\UserBundle\Security\UsernameUserProvider
+        arguments:
+            - '@pe_user.repository.user'
+            - '%pe_user.class.user%'
+
+    pe_user.user_provider.email:
+        public: true
+        class: PE\Bundle\UserBundle\Security\EmailUserProvider
+        arguments:
+            - '@pe_user.repository.user'
+            - '%pe_user.class.user%'
+
+    pe_user.user_provider.phone:
+        public: true
+        class: PE\Bundle\UserBundle\Security\PhoneUserProvider
+        arguments:
+            - '@pe_user.repository.user'
+            - '%pe_user.class.user%'
+
+    pe_user.message_transport.swift_mailer:
+        class: PE\Bundle\UserBundle\Message\Transport\SwiftMailerTransport
+        arguments:
+            - '@twig'
+            - '@mailer'
+
+    pe_user.token_generator:
+        public: true
+        class: PE\Bundle\UserBundle\Security\TokenGenerator

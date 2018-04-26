@@ -1,0 +1,17 @@
+pe_user__security_login:
+    path: /login/
+    methods: [GET, POST]
+    defaults:
+        _controller: pe_user.controller.security:loginAction
+
+pe_user__security_check:
+    path: /login_check/
+    methods: [POST]
+    defaults:
+        _controller: pe_user.controller.security:checkAction
+
+pe_user__security_logout:
+    path: /logout/
+    methods: [GET, POST]
+    defaults:
+        _controller: pe_user.controller.security:logoutAction

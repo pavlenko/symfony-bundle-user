@@ -1,0 +1,23 @@
+form:
+    username:    Username
+    password:    Password
+    remember_me: Remember me
+    submit:      Submit
+    sign_in:     Sign in
+    register:    Register
+
+registration:
+    register:
+        title: Registration
+    registered:
+        title: Successfully registered
+        text:  Check your email for confirmation link or enter code from SMS here
+
+reset_password:
+    request:
+        title: Reset password
+        text:  Please enter your email or phone to which reset token will be send
+
+security:
+    login:
+        title: Sign in

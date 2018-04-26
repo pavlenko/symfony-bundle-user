@@ -1,0 +1,19 @@
+pe_user__invitation:
+    resource: '@PEUserBundle/Resources/config/routing/invitation.yaml'
+    prefix: /invitation/
+
+pe_user__profile:
+    resource: '@PEUserBundle/Resources/config/routing/profile.yaml'
+    prefix: /profile/
+
+pe_user__registration:
+    resource: '@PEUserBundle/Resources/config/routing/registration.yaml'
+    prefix: /registration/
+
+pe_user__reset_password:
+    resource: '@PEUserBundle/Resources/config/routing/reset_password.yaml'
+    prefix: /reset-password/
+
+pe_user__security:
+    resource: '@PEUserBundle/Resources/config/routing/security.yaml'
+    prefix: /

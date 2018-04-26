@@ -1,0 +1,15 @@
+{% extends '@PECore/layout_min.html.twig' %}
+
+{% block body_class %}flex-row align-items-center{% endblock %}
+
+{% block main %}
+    <div class="modal" style="display: block">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {% include '@PEUser/Registration/registered_content.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

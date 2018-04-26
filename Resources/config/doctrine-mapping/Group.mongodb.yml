@@ -1,0 +1,7 @@
+PE\Bundle\UserBundle\Model\Group:
+    type: mappedSuperclass
+    fields:
+        name:
+            type: string
+        roles:
+            type: collection

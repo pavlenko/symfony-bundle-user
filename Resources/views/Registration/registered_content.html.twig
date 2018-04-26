@@ -1,0 +1,11 @@
+<h3>{{ 'registration.registered.title'|trans({}, 'PEUser') }}</h3>
+<p class="text-muted">{{ 'registration.registered.text'|trans({}, 'PEUser') }}</p>
+{% form_theme form '@PEUser/Form/bootstrap_4_layout.html.twig' %}
+{{ form_start(form, {'method': 'post', 'action': path('pe_user__registration_registered'), 'attr': {'novalidate': true}}) }}
+    {{ form_widget(form) }}
+    <div class="row">
+        <div class="col-6">
+            <button class="btn btn-primary px-4" type="submit">{{ 'form.submit'|trans({}, 'PEUser') }}</button>
+        </div>
+    </div>
+{{ form_end(form) }}

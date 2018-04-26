@@ -1,0 +1,11 @@
+services:
+    pe_user.controller.invitation:
+        public: true
+        class: PE\Bundle\UserBundle\Controller\InvitationController
+
+    pe_user.message.invitation:
+        public: true
+        class: PE\Bundle\UserBundle\Message\MessageInterface
+        arguments:
+            - '%pe_user.message_transports%'
+            - '%pe_user.message.invitation%'

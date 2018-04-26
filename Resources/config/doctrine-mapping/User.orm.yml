@@ -1,0 +1,19 @@
+PE\Bundle\UserBundle\Model\User:
+    type: mappedSuperclass
+    fields:
+        token:
+            type: string
+            nullable: true
+        username:
+            type: string
+        email:
+            type: string
+        phone:
+            type: string
+        roles:
+            type: json_array
+        password:
+            type: string
+        salt:
+            type: string
+            nullable: true

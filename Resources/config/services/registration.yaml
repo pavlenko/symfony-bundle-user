@@ -1,0 +1,13 @@
+services:
+    pe_user.controller.registration:
+        public: true
+        class: PE\Bundle\UserBundle\Controller\RegistrationController
+        arguments:
+            - '@pe_user.repository.user' #TODO remove
+
+    pe_user.message.registration:
+        public: true
+        class: PE\Bundle\UserBundle\Message\MessageInterface
+        arguments:
+            - '%pe_user.message_transports%'
+            - '%pe_user.message.registration%'

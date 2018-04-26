@@ -1,0 +1,18 @@
+<h3>{{ 'security.login.title'|trans({}, 'PEUser') }}</h3>
+
+{% form_theme form '@PEUser/Form/bootstrap_4_layout.html.twig' %}
+{{ form_start(form, {'method': 'post', 'attr': {'novalidate': true}}) }}
+    {{ form_widget(form) }}
+    <div class="row">
+        <div class="col-6">
+            <button class="btn btn-primary px-4" type="submit">
+                {{ 'form.sign_in'|trans({}, 'PEUser') }}
+            </button>
+        </div>
+        <div class="col-6 text-right">
+            <a class="btn btn-link px-0" href="{{ path('pe_user__registration_register') }}">
+                {{ 'form.register'|trans({}, 'PEUser') }}
+            </a>
+        </div>
+    </div>
+{{ form_end(form) }}
